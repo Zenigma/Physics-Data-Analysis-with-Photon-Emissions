@@ -1,6 +1,6 @@
 data {
 
-  int<lower=0> N; // number of data points
+  int<lower=0> N; // number of data points, cannot be negative, can be zero
   vector[N] x; // x observations
   vector[N] y; // y observations  
   vector[N] y_err; // y observation uncertainty
@@ -32,6 +32,7 @@ model {
 
   // likelihood
 
+// is distributed as a normal distribution
   y ~ normal(a+b*x, y_err);
 
   
